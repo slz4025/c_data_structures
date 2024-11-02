@@ -1,0 +1,7 @@
+*.core
+.mypy_cache/
+
+*.o
+*.a
+bin/
+test/
