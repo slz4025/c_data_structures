@@ -1,9 +1,15 @@
+
 CC= egcc
 CFLAGS= -Wall
 TARGET= example_app
 
-$(TARGET): main.o ../data_structures/data_structures.a
-	$(CC) $(CFLAGS) main.o ../data_structures/data_structures.a -o $(TARGET)
+all: bin/main.o  $(TARGET)
 
-main.o: main.c
-	$(CC) -o main.o -c main.c
+$(TARGET): bin/main.o lib/data_structures.a
+	$(CC) $(CFLAGS) -o $(TARGET) bin/main.o lib/data_structures.a
+
+bin/main.o: src/main.c
+	$(CC) -o bin/main.o -c src/main.c
+
+clean:
+	rm -rf bin/* test/*

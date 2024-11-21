@@ -1,0 +1,5 @@
+{
+  "target": "data_structures.a",
+  "cc": "egcc",
+  "cflags": "-Wall -lpthread"
+}

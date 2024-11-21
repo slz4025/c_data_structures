@@ -1,9 +1,9 @@
 #include <assert.h>
 #include <stdio.h>
 
-#include "../data_structures/include/list.h"
-#include "../data_structures/include/list_extended.h"
-#include "../data_structures/include/memory.h"
+#include "../lib/data_structures/list.h"
+#include "../lib/data_structures/list_extended.h"
+#include "../lib/data_structures/memory.h"
 
 addr_t int_wrap(int i) {
   addr_t e = memory_malloc(sizeof(int));

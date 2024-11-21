@@ -3,47 +3,46 @@ CC= egcc
 CFLAGS= -Wall -lpthread
 TARGET= data_structures.a
 
-
 all: bin/dict.o bin/list.o bin/list.test.o bin/str.o bin/str.test.o bin/dict.test.o bin/set.o bin/heap.test.o bin/memory.o bin/set.test.o bin/item.o bin/test_utils.o bin/memory.test.o bin/dict_conn.o bin/dict_perf.test.o bin/list_perf.test.o bin/list_conn.o bin/linked_list.test.o bin/list_extended.o bin/dict_extended.o bin/set_extended.o bin/heap_conn.o bin/utils.o bin/set_conn.o bin/linked_list.o bin/heap.o bin/heap_perf.test.o bin/utils.test.o bin/concurrency.test.o test/list test/str test/dict test/heap test/set test/memory test/dict_perf test/list_perf test/linked_list test/heap_perf test/utils test/concurrency $(TARGET)
 
-$(TARGET): bin/dict.o bin/list.o bin/str.o bin/set.o bin/memory.o bin/item.o bin/test_utils.o bin/dict_conn.o bin/list_conn.o bin/list_extended.o bin/dict_extended.o bin/set_extended.o bin/heap_conn.o bin/utils.o bin/set_conn.o bin/linked_list.o bin/heap.o
-	ar -r $(TARGET) bin/dict.o bin/list.o bin/str.o bin/set.o bin/memory.o bin/item.o bin/test_utils.o bin/dict_conn.o bin/list_conn.o bin/list_extended.o bin/dict_extended.o bin/set_extended.o bin/heap_conn.o bin/utils.o bin/set_conn.o bin/linked_list.o bin/heap.o
+$(TARGET): bin/dict.o bin/list.o bin/str.o bin/set.o bin/memory.o bin/item.o bin/test_utils.o bin/dict_conn.o bin/list_conn.o bin/list_extended.o bin/dict_extended.o bin/set_extended.o bin/heap_conn.o bin/utils.o bin/set_conn.o bin/linked_list.o bin/heap.o 
+	ar -r $(TARGET) bin/dict.o bin/list.o bin/str.o bin/set.o bin/memory.o bin/item.o bin/test_utils.o bin/dict_conn.o bin/list_conn.o bin/list_extended.o bin/dict_extended.o bin/set_extended.o bin/heap_conn.o bin/utils.o bin/set_conn.o bin/linked_list.o bin/heap.o 
 
-test/list: bin/list.test.o bin/str.o bin/list_extended.o bin/test_utils.o bin/memory.o bin/utils.o bin/list.o
-	$(CC) $(CFLAGS) bin/list.test.o bin/str.o bin/list_extended.o bin/test_utils.o bin/memory.o bin/utils.o bin/list.o -o test/list
+test/list: bin/list.test.o bin/test_utils.o bin/utils.o bin/list.o bin/list_extended.o bin/memory.o bin/str.o 
+	$(CC) $(CFLAGS) bin/list.test.o bin/test_utils.o bin/utils.o bin/list.o bin/list_extended.o bin/memory.o bin/str.o -o test/list 
 
-test/str: bin/str.test.o bin/str.o bin/list_extended.o bin/test_utils.o bin/memory.o bin/utils.o bin/list.o
-	$(CC) $(CFLAGS) bin/str.test.o bin/str.o bin/list_extended.o bin/test_utils.o bin/memory.o bin/utils.o bin/list.o -o test/str
+test/str: bin/str.test.o bin/test_utils.o bin/utils.o bin/list.o bin/list_extended.o bin/memory.o bin/str.o 
+	$(CC) $(CFLAGS) bin/str.test.o bin/test_utils.o bin/utils.o bin/list.o bin/list_extended.o bin/memory.o bin/str.o -o test/str 
 
-test/dict: bin/dict.test.o bin/str.o bin/test_utils.o bin/memory.o bin/dict_extended.o bin/item.o bin/utils.o bin/dict.o bin/list.o
-	$(CC) $(CFLAGS) bin/dict.test.o bin/str.o bin/test_utils.o bin/memory.o bin/dict_extended.o bin/item.o bin/utils.o bin/dict.o bin/list.o -o test/dict
+test/dict: bin/dict.test.o bin/test_utils.o bin/dict.o bin/utils.o bin/list.o bin/item.o bin/dict_extended.o bin/memory.o bin/str.o 
+	$(CC) $(CFLAGS) bin/dict.test.o bin/test_utils.o bin/dict.o bin/utils.o bin/list.o bin/item.o bin/dict_extended.o bin/memory.o bin/str.o -o test/dict 
 
-test/heap: bin/heap.test.o bin/str.o bin/list_extended.o bin/test_utils.o bin/memory.o bin/heap.o bin/item.o bin/utils.o bin/dict.o bin/linked_list.o bin/list.o
-	$(CC) $(CFLAGS) bin/heap.test.o bin/str.o bin/list_extended.o bin/test_utils.o bin/memory.o bin/heap.o bin/item.o bin/utils.o bin/dict.o bin/linked_list.o bin/list.o -o test/heap
+test/heap: bin/heap.test.o bin/test_utils.o bin/dict.o bin/utils.o bin/list.o bin/heap.o bin/list_extended.o bin/item.o bin/memory.o bin/str.o bin/linked_list.o 
+	$(CC) $(CFLAGS) bin/heap.test.o bin/test_utils.o bin/dict.o bin/utils.o bin/list.o bin/heap.o bin/list_extended.o bin/item.o bin/memory.o bin/str.o bin/linked_list.o -o test/heap 
 
-test/set: bin/set.test.o bin/str.o bin/list_extended.o bin/test_utils.o bin/memory.o bin/dict_extended.o bin/set_extended.o bin/item.o bin/utils.o bin/set.o bin/dict.o bin/list.o
-	$(CC) $(CFLAGS) bin/set.test.o bin/str.o bin/list_extended.o bin/test_utils.o bin/memory.o bin/dict_extended.o bin/set_extended.o bin/item.o bin/utils.o bin/set.o bin/dict.o bin/list.o -o test/set
+test/set: bin/set.test.o bin/test_utils.o bin/set_extended.o bin/dict.o bin/utils.o bin/list.o bin/set.o bin/list_extended.o bin/item.o bin/dict_extended.o bin/memory.o bin/str.o 
+	$(CC) $(CFLAGS) bin/set.test.o bin/test_utils.o bin/set_extended.o bin/dict.o bin/utils.o bin/list.o bin/set.o bin/list_extended.o bin/item.o bin/dict_extended.o bin/memory.o bin/str.o -o test/set 
 
-test/memory: bin/memory.test.o bin/memory.o bin/utils.o
-	$(CC) $(CFLAGS) bin/memory.test.o bin/memory.o bin/utils.o -o test/memory
+test/memory: bin/memory.test.o bin/utils.o bin/memory.o 
+	$(CC) $(CFLAGS) bin/memory.test.o bin/utils.o bin/memory.o -o test/memory 
 
-test/dict_perf: bin/dict_perf.test.o bin/str.o bin/test_utils.o bin/memory.o bin/item.o bin/utils.o bin/dict.o bin/list.o
-	$(CC) $(CFLAGS) bin/dict_perf.test.o bin/str.o bin/test_utils.o bin/memory.o bin/item.o bin/utils.o bin/dict.o bin/list.o -o test/dict_perf
+test/dict_perf: bin/dict_perf.test.o bin/test_utils.o bin/dict.o bin/utils.o bin/list.o bin/item.o bin/memory.o bin/str.o 
+	$(CC) $(CFLAGS) bin/dict_perf.test.o bin/test_utils.o bin/dict.o bin/utils.o bin/list.o bin/item.o bin/memory.o bin/str.o -o test/dict_perf 
 
-test/list_perf: bin/list_perf.test.o bin/str.o bin/test_utils.o bin/memory.o bin/utils.o bin/list.o
-	$(CC) $(CFLAGS) bin/list_perf.test.o bin/str.o bin/test_utils.o bin/memory.o bin/utils.o bin/list.o -o test/list_perf
+test/list_perf: bin/list_perf.test.o bin/test_utils.o bin/utils.o bin/list.o bin/memory.o bin/str.o 
+	$(CC) $(CFLAGS) bin/list_perf.test.o bin/test_utils.o bin/utils.o bin/list.o bin/memory.o bin/str.o -o test/list_perf 
 
-test/linked_list: bin/linked_list.test.o bin/str.o bin/test_utils.o bin/memory.o bin/utils.o bin/linked_list.o bin/list.o
-	$(CC) $(CFLAGS) bin/linked_list.test.o bin/str.o bin/test_utils.o bin/memory.o bin/utils.o bin/linked_list.o bin/list.o -o test/linked_list
+test/linked_list: bin/linked_list.test.o bin/test_utils.o bin/utils.o bin/list.o bin/memory.o bin/str.o bin/linked_list.o 
+	$(CC) $(CFLAGS) bin/linked_list.test.o bin/test_utils.o bin/utils.o bin/list.o bin/memory.o bin/str.o bin/linked_list.o -o test/linked_list 
 
-test/heap_perf: bin/heap_perf.test.o bin/str.o bin/list_extended.o bin/test_utils.o bin/memory.o bin/heap.o bin/utils.o bin/item.o bin/dict.o bin/linked_list.o bin/list.o
-	$(CC) $(CFLAGS) bin/heap_perf.test.o bin/str.o bin/list_extended.o bin/test_utils.o bin/memory.o bin/heap.o bin/utils.o bin/item.o bin/dict.o bin/linked_list.o bin/list.o -o test/heap_perf
+test/heap_perf: bin/heap_perf.test.o bin/test_utils.o bin/dict.o bin/utils.o bin/list.o bin/heap.o bin/list_extended.o bin/item.o bin/memory.o bin/str.o bin/linked_list.o 
+	$(CC) $(CFLAGS) bin/heap_perf.test.o bin/test_utils.o bin/dict.o bin/utils.o bin/list.o bin/heap.o bin/list_extended.o bin/item.o bin/memory.o bin/str.o bin/linked_list.o -o test/heap_perf 
 
-test/utils: bin/utils.test.o bin/utils.o
-	$(CC) $(CFLAGS) bin/utils.test.o bin/utils.o -o test/utils
+test/utils: bin/utils.test.o bin/utils.o 
+	$(CC) $(CFLAGS) bin/utils.test.o bin/utils.o -o test/utils 
 
-test/concurrency: bin/concurrency.test.o bin/str.o bin/list_extended.o bin/test_utils.o bin/memory.o bin/dict_extended.o bin/set_conn.o bin/heap.o bin/dict_conn.o bin/utils.o bin/item.o bin/set.o bin/dict.o bin/heap_conn.o bin/list_conn.o bin/linked_list.o bin/list.o
-	$(CC) $(CFLAGS) bin/concurrency.test.o bin/str.o bin/list_extended.o bin/test_utils.o bin/memory.o bin/dict_extended.o bin/set_conn.o bin/heap.o bin/dict_conn.o bin/utils.o bin/item.o bin/set.o bin/dict.o bin/heap_conn.o bin/list_conn.o bin/linked_list.o bin/list.o -o test/concurrency
+test/concurrency: bin/concurrency.test.o bin/test_utils.o bin/list_conn.o bin/dict.o bin/utils.o bin/list.o bin/heap_conn.o bin/heap.o bin/set.o bin/list_extended.o bin/set_conn.o bin/dict_conn.o bin/item.o bin/dict_extended.o bin/memory.o bin/str.o bin/linked_list.o 
+	$(CC) $(CFLAGS) bin/concurrency.test.o bin/test_utils.o bin/list_conn.o bin/dict.o bin/utils.o bin/list.o bin/heap_conn.o bin/heap.o bin/set.o bin/list_extended.o bin/set_conn.o bin/dict_conn.o bin/item.o bin/dict_extended.o bin/memory.o bin/str.o bin/linked_list.o -o test/concurrency 
 
 bin/dict.o: src/dict.c
 	$(CC) -o bin/dict.o -c src/dict.c
@@ -131,7 +130,6 @@ bin/utils.test.o: src/utils.test.c
 
 bin/concurrency.test.o: src/concurrency.test.c
 	$(CC) -o bin/concurrency.test.o -c src/concurrency.test.c
-
 
 clean:
 	rm -rf bin/* test/*

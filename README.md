@@ -16,8 +16,7 @@ List, Dict, Set, and Heap also contain a wrapper data structure for concurrency 
 The following instructions were prepared for [OpenBSD 7.3](https://www.openbsd.org/73.html).
 ```
 $ cd data_structures/
-$ chmod +x build.sh
-$ ./build.sh
+$ make
 ```
 
 This will yield a `data_structures.a` artifact you can include in your project.

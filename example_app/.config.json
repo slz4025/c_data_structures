@@ -1,0 +1,5 @@
+{
+  "target": "example_app",
+  "cc": "egcc",
+  "cflags": "-Wall"
+}
